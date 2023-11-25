@@ -13,7 +13,7 @@ function HomePage() {
   return (
     <div className="flex h-screen">
       {/* Navigation Bar */}
-      <div className="w-52 bg-gradient-custom text-white flex flex-col justify-between" style={{ height: '100vh' }}>
+      <div className="w-48 bg-gradient-custom text-white flex flex-col justify-between" style={{ height: '100vh' }}>
         <div>
           {/* Profile Image */}
           <div className="flex justify-center mt-7">
@@ -34,7 +34,7 @@ function HomePage() {
             className="rounded-xl h-20 w-20 object-cover" // Adjust size as needed
           />
         </div>
-      <div className="flex justify-center mb-5">
+      <div className="flex justify-center mb-9">
         <img
           src="/Logout.png"
           alt="Logout"
