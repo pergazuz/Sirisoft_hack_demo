@@ -9,7 +9,7 @@ from keras.utils import to_categorical
 # load model
 test_df = pd.read_csv('C:/Users/CPE/OneDrive/เดสก์ท็อป/hackaday_demo/Sirisoft_hack_demo/finished/dataset/mitbih_test.csv', header=None)
 
-X_test =test_df.iloc[:50,:186].values
+X_test =test_df.iloc[:200,:186].values
 X_test_reshaped = X_test.reshape(len(X_test), X_test.shape[1],1)
 
 model = tf.keras.models.load_model('C:/Users/CPE/OneDrive/เดสก์ท็อป/hackaday_demo/Sirisoft_hack_demo/finished/best_model.h5')

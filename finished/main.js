@@ -1,4 +1,4 @@
-// requst get using axios
+// request get using axios
 const api_route = 'http://127.0.0.1:8000/predict';
 
 function predict() {
@@ -7,12 +7,12 @@ function predict() {
     const alert = document.getElementById('alert');
 
     // Reset text and show loading
-    prediction_text.innerHTML = 'กำลังตรวจสอบ...';
+    prediction_text.innerHTML = 'Checking...';
 
     // Function to create and update the line chart
     function createLineChart(data, borderColor) {
         const ctx = document.getElementById('myChart');
-        
+
         // Check if a chart instance already exists
         if (ctx && Chart.getChart(ctx)) {
             // If it exists, destroy it
@@ -48,11 +48,11 @@ function predict() {
 
     // predict
     var myMappings = {
-        'N': 'N : Non-ecotic beats (normal beat)',
-        'S': 'S : Supraventricular ectopic beats',
-        'V': 'V : Ventricular ectopic beats',
-        'F': 'F : Fusion beats',
-        'Q': 'Q : Unknown beats'
+        'N': 'Non-ecotic beats (normal beat)',
+        'S': 'Supraventricular ectopic beats',
+        'V': 'Ventricular ectopic beats',
+        'F': 'Fusion beats',
+        'Q': 'Unknown beats'
     };
 
     axios.post(api_route, {}).then(function (response) {
@@ -60,33 +60,37 @@ function predict() {
         let i = 0;
 
         // Define a function to update prediction_text with a delay
+// Define a function to update prediction_text with a delay
         function updateTextWithDelay() {
-            if (i < response.data.text.length) {
-                prediction_text.innerHTML = myMappings[response.data.text[i]];
-                //
+        if (i < response.data.text.length) {
+            const condition = response.data.text[i] !== 'N';
+            prediction_text.innerHTML = myMappings[response.data.text[i]];
 
-                sample_text.innerHTML = i;
-                const data = Object.values(response.data.graph[i]);
-                console.log(data);
+            // Set text color based on the condition
+            prediction_text.style.color = condition ? 'red' : 'rgba(75, 192, 192, 1)';
 
-                // Determine the borderColor based on the condition
-                const borderColor = response.data.text[i] !== 'N' ? 'red' : 'rgba(75, 192, 192, 1)';
+            sample_text.innerHTML = 'Patient Heart';
+            const data = Object.values(response.data.graph[i]);
 
-                createLineChart(data, borderColor);
+            // Determine the borderColor based on the condition
+            const borderColor = condition ? 'red' : 'rgba(75, 192, 192, 1)';
 
-                if (response.data.text[i] != 'N') {
-                    alert.innerHTML = 'adverse event detected!';
-                } else {
-                    alert.innerHTML = '';
-                }
+            createLineChart(data, borderColor);
 
-                // Increment the counter for the next iteration
-                i++;
-
-                // Call the function recursively after a delay (e.g., 200 milliseconds)
-                setTimeout(updateTextWithDelay, 200);
+            if (condition) {
+                alert.innerHTML = ''; // Set your desired value when condition is true
+            } else {
+                alert.innerHTML = ''; // Set your desired value when condition is false
             }
+
+            // Increment the counter for the next iteration
+            i++;
+
+            // Call the function recursively after a delay (e.g., 200 milliseconds)
+            setTimeout(updateTextWithDelay, 200);
         }
+    }
+
 
         // Start the process by calling the function for the first time
         updateTextWithDelay();
