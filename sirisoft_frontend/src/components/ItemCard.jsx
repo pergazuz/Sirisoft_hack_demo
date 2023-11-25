@@ -30,7 +30,17 @@ function ItemCard({ title, description, imageUrl, topBarText, HeartBeat, BedExit
                         </div>
                     </div>
 
-                    <div className="bg-gradient-custom p-5 rounded-md m-1 flex-1 drop-shadow-xl text-white text-sm">Movement</div>
+                    <div className="bg-gradient-custom p-4 rounded-md m-1 flex-1 drop-shadow-xl text-white text-sm flex flex-col items-start">
+                        <div className="flex items-center">
+                            
+                        <img src="/walk.png" alt="Logo" className="h-12 w-12"/>
+                            <span className='mt-[-48px] ml-2'>Movement</span>
+                        </div>
+                        <div className="ml-14 mt-[-20px]">
+                        <img src="/walk_level.png" alt="Logo" className='mt-[-10px]'/>
+                            <p style={{ display: 'inline' }} className='text-xs '>Last Move: 20m ago</p>
+                        </div>
+                    </div>
                 </div>
                 <div className="flex flex-wrap">
                     <div className="bg-gradient-custom-pink px-1 rounded-md m-1 flex-1 drop-shadow-xl text-white text-sm flex flex-col justify-center items-center">
