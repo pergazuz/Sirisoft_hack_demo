@@ -136,11 +136,15 @@ function DetailModal({ item, onClose }) {
     setIsModalOpen(false);
   };
 
-  const filteredItems = filter === 'critical'
-  ? items.filter(item => item.statusHighHR)
-  : items;
-
-  console.log("Current filter:", filter);
+  const filteredItems = filter === 'all'
+    ? items
+    : filter === 'critical'
+      ? items.filter(item => item.statusHighHR)
+      : filter === 'visitNeeded'
+        ? items.filter(item => item.statusNeedVisitor)
+        : filter === 'par'
+          ? items.filter(item => item.statusVisitor)
+          : items;
 
   return (
     <div className="flex flex-wrap justify-between p-10">

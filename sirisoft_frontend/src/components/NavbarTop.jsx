@@ -9,6 +9,18 @@ function NavbarTop({ onFilterChange }) {
     }
   };
 
+  const handleAllClick = () => {
+    onFilterChange('all');
+  };
+
+  const handleVisitNeededClick = () => {
+    onFilterChange('visitNeeded');
+  };
+
+  const handlePaRClick = () => {
+    onFilterChange('par');
+  };
+
   return (
     <div className="px-10 pt-10 flex">
       <input
@@ -16,7 +28,7 @@ function NavbarTop({ onFilterChange }) {
         placeholder="Search Room/Resident"
         className="p-4 border rounded-full flex-grow max-w-xs" // Added max-w-xs for fixed width
       />
-      <button className="bg-gradient-custom hover:bg-blue-700 text-white font-bold py-2 px-8 ml-4 rounded-full">
+      <button onClick={handleAllClick} className="bg-gradient-custom hover:bg-blue-700 text-white font-bold py-2 px-8 ml-4 rounded-full">
         All
       </button>
       <div className="text-black font-bold py-2 px-6 ml-4 rounded-full border-2 border-[#FB0000] hover:bg-[#FB0000] hover:text-white cursor-pointer" onClick={handleCriticalClick}>
@@ -25,13 +37,13 @@ function NavbarTop({ onFilterChange }) {
           5
         </button>
       </div>
-      <div className="text-black font-bold py-2 px-6 ml-4 rounded-full border-2 border-[#FDD12E] cursor-pointer">
+      <div className="text-black font-bold py-2 px-6 ml-4 rounded-full border-2 border-[#FDD12E] hover:bg-[#FDD12E] hover:text-white cursor-pointer" onClick={handleVisitNeededClick}>
         Visit Needed
         <button className="bg-[#FDD12E] hover:bg-[#FFF12E] text-white font-bold py-2 px-6 ml-4 rounded-full">
           13
         </button>
       </div>
-      <div className="text-black font-bold py-2 px-6 ml-4 rounded-full border-2 border-[#4F45D9] cursor-pointer">
+      <div className="text-black font-bold py-2 px-6 ml-4 rounded-full border-2 border-[#4F45D9] hover:bg-[#4F45D9] hover:text-white cursor-pointer" onClick={handlePaRClick}>
         PaR
         <button className="bg-gradient-custom hover:bg-blue-700 text-white font-bold py-2 px-6 ml-4 rounded-full">
           13
