@@ -1,9 +1,11 @@
 # model
-from model import predict as model_predict
+from test import predict as model_predict
 # Web Server
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from typing import List
+import pandas as pd
 
 # create app
 app = FastAPI()
@@ -21,9 +23,9 @@ def index():
     return {'message': 'This is a sentiment analysis model API.'}
 
 # predict route
-@app.get('/predict')
-def predict(file: str):
-    return { 'sentiment': model_predict(file)}
+@app.post('/predict')
+def predict():
+    return model_predict()
 
 
 # start server

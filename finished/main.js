@@ -1,47 +1,96 @@
-// main.js
-
+// requst get using axios
 const api_route = 'http://127.0.0.1:8000/predict';
 
 function predict() {
-    const input = document.getElementById('input_csv');
     const prediction_text = document.getElementById('prediction_text');
-    
-    // Get the selected file
-    const file = input.files[0];
+    const sample_text = document.getElementById('sample_text');
+    const alert = document.getElementById('alert');
 
-    if (file) {
-        const reader = new FileReader();
+    // Reset text and show loading
+    prediction_text.innerHTML = 'กำลังตรวจสอบ...';
 
-        reader.onload = function (e) {
-            const content = e.target.result;
+    // Function to create and update the line chart
+    function createLineChart(data, borderColor) {
+        const ctx = document.getElementById('myChart');
+        
+        // Check if a chart instance already exists
+        if (ctx && Chart.getChart(ctx)) {
+            // If it exists, destroy it
+            Chart.getChart(ctx).destroy();
+        }
 
-            // Split CSV content into an array of rows
-            const rows = content.split('\n');
-
-            // Loop through each row for prediction
-            rows.forEach((row, index) => {
-                // You may want to skip the header row (if present) using an if statement
-
-                // Reset text and show loading for each iteration
-                prediction_text.innerHTML = `กำลังตรวจสอบ รายการที่ ${index + 1}...`;
-
-                // Predict for the current row
-                axios.get(api_route, {
-                    params: {
-                        file: row
+        // Create the new chart instance
+        const myChart = new Chart(ctx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: Object.keys(data),
+                datasets: [{
+                    label: 'Line Plot',
+                    data: Object.values(data),
+                    fill: false,
+                    borderColor: borderColor,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom'
+                    },
+                    y: {
+                        beginAtZero: true
                     }
-                }).then((response) => {
-                    prediction_text.innerHTML = `รายการที่ ${index + 1}: ${response.data.sentiment}`;
-                }).catch((error) => {
-                    console.log(error);
-                });
-            });
-        };
-
-        // Read the file as text
-        reader.readAsText(file);
-    } else {
-        // Handle the case when no file is selected
-        prediction_text.innerHTML = 'กรุณาเลือกไฟล์ CSV';
+                }
+            }
+        });
     }
+
+    // predict
+    var myMappings = {
+        'N': 'N : Non-ecotic beats (normal beat)',
+        'S': 'S : Supraventricular ectopic beats',
+        'V': 'V : Ventricular ectopic beats',
+        'F': 'F : Fusion beats',
+        'Q': 'Q : Unknown beats'
+    };
+
+    axios.post(api_route, {}).then(function (response) {
+        // Use a counter to keep track of the index
+        let i = 0;
+
+        // Define a function to update prediction_text with a delay
+        function updateTextWithDelay() {
+            if (i < response.data.text.length) {
+                prediction_text.innerHTML = myMappings[response.data.text[i]];
+                //
+
+                sample_text.innerHTML = i;
+                const data = Object.values(response.data.graph[i]);
+                console.log(data);
+
+                // Determine the borderColor based on the condition
+                const borderColor = response.data.text[i] !== 'N' ? 'red' : 'rgba(75, 192, 192, 1)';
+
+                createLineChart(data, borderColor);
+
+                if (response.data.text[i] != 'N') {
+                    alert.innerHTML = 'adverse event detected!';
+                } else {
+                    alert.innerHTML = '';
+                }
+
+                // Increment the counter for the next iteration
+                i++;
+
+                // Call the function recursively after a delay (e.g., 200 milliseconds)
+                setTimeout(updateTextWithDelay, 200);
+            }
+        }
+
+        // Start the process by calling the function for the first time
+        updateTextWithDelay();
+    }).catch((error) => {
+        console.log(error);
+    });
 }

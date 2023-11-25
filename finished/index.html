@@ -6,6 +6,7 @@
     <!-- axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- js-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="main.js"></script>
 </head>
 
@@ -14,13 +15,20 @@
     <div style="text-align:center">
         <h1>Dianogose</h1>
         <div class="sample_card">
-            <h1 style="color: cyan;">Patient heart</h1>
-            <div class="" id="prediction" style="color: red;">
+            <h1 id="sample_text" style="color: cyan;">Patient heart</h1>
+            <div class="" id="prediction" style="color: rgb(8, 7, 7);">
                 <h1 id="prediction_text"></h1>
             </div>
         </div>
+        <div class="alert_card">
+            <h1 id="alert" style="color: rgb(255, 102, 0);"></h1>
+        </div>
+        <div style="width: 80%; margin: auto;">
+            <canvas id="myChart"></canvas>
+        </div>
+
         <!-- input -->
-        <input type="file" id="input_csv" accept=".csv">
+        <!-- <input type="file" id="input_csv" accept=".csv"> -->
         <!-- button -->
         <button class="button" onclick="predict()">Predict</button>
     </div>
