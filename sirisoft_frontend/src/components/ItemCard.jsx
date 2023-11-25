@@ -2,7 +2,7 @@ import React from 'react';
 
 function ItemCard({ title, description, imageUrl, topBarText }) {
   return (
-    <div className="bg-white rounded-lg shadow-lg p-4 mb-4 relative flex w-1/2 h-2/3"> {/* Added flex for layout */}
+    <div className="bg-white rounded-lg shadow-lg p-4 mb-4 relative flex w-[450px] h-[260px]"> {/* Added flex for layout */}
       <div className="bg-gradient-custom text-white py-1 px-4 rounded-t-lg absolute top-0 left-0 right-0">
         <span>{topBarText}</span>
       </div>

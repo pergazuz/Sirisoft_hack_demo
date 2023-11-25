@@ -28,18 +28,20 @@ function HomePage() {
       imageUrl: "/profile.png", // Replace with your image path
       topBarText: "356 - KMUTT",
     },
+
   ];
 
   return (
     <div className="flex flex-wrap justify-between p-10">
       {items.map((item, index) => (
-        <ItemCard
-          key={index}
-          title={item.title}
-          description={item.description}
-          imageUrl={item.imageUrl}
-          topBarText={item.topBarText}
-        />
+        <div key={index} className="m-2"> 
+          <ItemCard
+            title={item.title}
+            description={item.description}
+            imageUrl={item.imageUrl}
+            topBarText={item.topBarText}
+          />
+        </div>
       ))}
     </div>
   );

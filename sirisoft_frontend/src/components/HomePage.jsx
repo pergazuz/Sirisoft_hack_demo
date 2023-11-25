@@ -34,7 +34,7 @@ function HomePage() {
             className="rounded-xl h-20 w-20 object-cover" // Adjust size as needed
           />
         </div>
-        <div className="flex justify-center mb-5">
+      <div className="flex justify-center mb-5">
         <img
           src="/Logout.png"
           alt="Logout"
@@ -44,7 +44,7 @@ function HomePage() {
       </div>
       </div>
       <div className="flex-1 flex flex-col bg-[#E3E3E3]">
-        <div className="p-10 flex">
+        <div className="px-10 pt-10 flex">
           <input
             type="text"
             placeholder="Search Room/Resident"
