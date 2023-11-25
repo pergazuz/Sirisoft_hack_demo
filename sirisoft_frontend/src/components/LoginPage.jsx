@@ -31,7 +31,7 @@ function LoginPage() {
     const closeModal = () => setShowModal(false);
 
     return (
-        <div style={{ backgroundColor: '#E3E3E3' }} className="flex justify-center items-center h-screen">
+        <div className="bg-gradient-custom flex justify-center items-center h-screen">
             <div className="w-full max-w-xs">
                 <form className="bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
                     <div className="flex justify-center">
