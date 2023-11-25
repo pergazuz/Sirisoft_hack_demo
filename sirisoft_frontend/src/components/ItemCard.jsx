@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartPulse } from "@fortawesome/free-solid-svg-icons";
 
-function ItemCard({ title, description, imageUrl, topBarText, HeartBeat }) {
+function ItemCard({ title, description, imageUrl, topBarText, HeartBeat, BedExit }) {
     return (
         <div className="bg-[#F6F6F6] rounded-lg shadow-lg p-4 mb-4 relative flex flex-col w-[470px] h-[260px]">
             <div className="bg-gradient-custom text-white py-1 px-4 rounded-t-lg absolute top-0 left-0 right-0">
@@ -33,8 +33,14 @@ function ItemCard({ title, description, imageUrl, topBarText, HeartBeat }) {
                     <div className="bg-gradient-custom p-5 rounded-md m-1 flex-1 drop-shadow-xl text-white text-sm">Movement</div>
                 </div>
                 <div className="flex flex-wrap">
-                    <div className="bg-gradient-custom-pink p-5 rounded-md m-1 flex-1 drop-shadow-xl text-white text-sm">Since Bed Exit</div>
-                    <div className="bg-white p-5 rounded-md m-1 flex-1 drop-shadow-xl text-[#4138D0] text-sm">Status</div>
+                <div className="bg-gradient-custom-pink px-4 rounded-md m-1 flex-1 drop-shadow-xl text-white text-sm flex flex-col justify-center items-center">
+                    Since Bed Exit
+                    <p className='text-base font-bold'>{BedExit}</p>
+                </div>
+                    <div className="bg-white p-5 rounded-md m-1 flex-1 drop-shadow-xl text-[#4138D0] text-sm">
+                        Status
+                        
+                        </div>
                 </div>
             </div>
         </div>

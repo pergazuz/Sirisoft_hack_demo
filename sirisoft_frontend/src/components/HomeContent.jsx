@@ -10,6 +10,7 @@ function HomePage() {
       imageUrl: "/profile.png", // Replace with your image path
       topBarText: "325 - KMUTT",
       HeartBeat: "80",
+      BedExit: "1 H 21 M"
     },
     {
       title: "Panupong Kaewkhao",
@@ -17,6 +18,7 @@ function HomePage() {
       imageUrl: "/profile.png", // Replace with your image path
       topBarText: "308 - CRA",
       HeartBeat: "90",
+      BedExit: "1 H 21 M"
     },
     {
       title: "Panupong Kaewkhao",
@@ -24,6 +26,7 @@ function HomePage() {
       imageUrl: "/profile.png", // Replace with your image path
       topBarText: "307 - PSCM",
       HeartBeat: "95",
+      BedExit: "1 H 21 M"
     },
     {
       title: "Panupong Kaewkhao",
@@ -31,6 +34,7 @@ function HomePage() {
       imageUrl: "/profile.png", // Replace with your image path
       topBarText: "356 - KMUTT",
       HeartBeat: "110",
+      BedExit: "1 H 21 M"
     },
     
 
@@ -46,6 +50,7 @@ function HomePage() {
             imageUrl={item.imageUrl}
             topBarText={item.topBarText}
             HeartBeat={item.HeartBeat}
+            BedExit={item.BedExit}
           />
         </div>
       ))}
