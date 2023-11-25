@@ -38,12 +38,12 @@ function ItemCard({ title, description, imageUrl, topBarText, HeartBeat, BedExit
                         <p className='text-base font-bold'>{BedExit}</p>
                     </div>
                     <div className="bg-white p-2 rounded-md m-1 flex-1 drop-shadow-xl text-[#4138D0] text-sm flex flex-col justify-center items-center">
-                    Status
-                    <div className="flex justify-around w-full">
-            <div className='text-white text-xs bg-[#FB0000] flex justify-center items-center w-1/2 h-5 rounded-full mr-1'>High HR</div>
-            <div className='text-white text-xs bg-gradient-custom flex justify-center items-center w-1/2 h-5 rounded-full'>VISITOR</div>
-        </div>
-                </div>
+                        Status
+                        <div className="flex justify-around w-full">
+                            <div className='text-white text-xs bg-[#FB0000] flex justify-center items-center w-1/2 h-5 rounded-full mr-1'>High HR</div>
+                            <div className='text-white text-xs bg-gradient-custom flex justify-center items-center w-1/2 h-5 rounded-full'>VISITOR</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
