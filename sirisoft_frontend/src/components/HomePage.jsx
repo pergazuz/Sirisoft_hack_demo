@@ -1,7 +1,15 @@
 import React from 'react';
 import HomeContent from './HomeContent'; // Import the HomeContent component
+import { useNavigate } from 'react-router-dom'; 
+
 
 function HomePage() {
+  const navigate = useNavigate(); // Create an instance of useNavigate
+
+  // Function to handle navigation on click
+  const handleLogoutClick = () => {
+    navigate('/'); // Navigate to the home page ('/')
+  };
   return (
     <div className="flex h-screen">
       {/* Navigation Bar */}
@@ -27,12 +35,13 @@ function HomePage() {
           />
         </div>
         <div className="flex justify-center mb-5">
-          <img
-            src="/Logout.png" // Replace with your image path
-            alt="Logout"
-            className="rounded-full h-20 w-20 object-cover" // Adjust size as needed
-          />
-        </div>
+        <img
+          src="/Logout.png"
+          alt="Logout"
+          className="rounded-full h-20 w-20 object-cover cursor-pointer" // Added cursor-pointer for better UX
+          onClick={handleLogoutClick} // Attach the click event handler
+        />
+      </div>
       </div>
       <div className="flex-1 flex flex-col bg-[#E3E3E3]">
         <div className="p-10 flex">
