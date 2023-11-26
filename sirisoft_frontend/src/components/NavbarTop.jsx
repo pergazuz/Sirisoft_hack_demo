@@ -39,7 +39,7 @@ function NavbarTop({ onFilterChange }) {
       </div>
       <div className="text-black font-bold py-2 px-6 ml-4 rounded-full border-2 border-[#FDD12E] hover:bg-[#FDD12E] hover:text-white cursor-pointer" onClick={handleVisitNeededClick}>
         Visit Needed
-        <button className="bg-[#FDD12E] hover:bg-[#FFF12E] text-white font-bold py-2 px-6 ml-4 rounded-full">
+        <button className="bg-[#FDD12E] hover:bg-[#FDD12E] text-white font-bold py-2 px-6 ml-4 rounded-full">
           13
         </button>
       </div>
