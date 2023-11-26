@@ -34,19 +34,19 @@ function NavbarTop({ onFilterChange }) {
       <div className="text-black font-bold py-2 px-6 ml-4 rounded-full border-2 border-[#FB0000] hover:bg-[#FB0000] hover:text-white cursor-pointer" onClick={handleCriticalClick}>
         Critical
         <button className="bg-[#FB0000] hover:bg-[#FB0000]] text-white font-bold py-2 px-6 ml-4 rounded-full">
-          5
+          3
         </button>
       </div>
       <div className="text-black font-bold py-2 px-6 ml-4 rounded-full border-2 border-[#FDD12E] hover:bg-[#FDD12E] hover:text-white cursor-pointer" onClick={handleVisitNeededClick}>
         Visit Needed
         <button className="bg-[#FDD12E] hover:bg-[#FDD12E] text-white font-bold py-2 px-6 ml-4 rounded-full">
-          13
+          2
         </button>
       </div>
       <div className="text-black font-bold py-2 px-6 ml-4 rounded-full border-2 border-[#4F45D9] hover:bg-[#4F45D9] hover:text-white cursor-pointer" onClick={handlePaRClick}>
         PaR
         <button className="bg-gradient-custom hover:bg-blue-700 text-white font-bold py-2 px-6 ml-4 rounded-full">
-          13
+          2
         </button>
       </div>
     </div>
