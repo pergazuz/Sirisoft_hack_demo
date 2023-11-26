@@ -26,7 +26,11 @@ function LoginPage() {
     };
     
 
-    const openModal = () => setShowModal(true);
+    const openModal = (e) => {
+        e.preventDefault(); // Prevent default event behavior
+        setShowModal(true);
+    };
+
     const closeModal = () => setShowModal(false);
 
     return (
@@ -69,7 +73,9 @@ function LoginPage() {
                         </button>
                     </div>
                     <div className="text-center mt-4">
-                        <p>Don't have an account? <button onClick={openModal} className="text-purple-500 hover:text-purple-700">Sign Up</button></p>
+                        <p>Don't have an account? 
+                            <button onClick={(e) => openModal(e)} className="text-purple-500 hover:text-purple-700">Sign Up</button>
+                        </p>
                     </div>
                 </form>
             </div>
