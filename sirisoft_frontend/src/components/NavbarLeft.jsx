@@ -31,19 +31,27 @@ function HomePage() {
     return location.pathname === path;
   };
 
+  const peopleDetails = [
+    { name: 'Pirawit Saeheng', room: '325 - KMUTT' },
+    { name: 'Papinwit Suttina', room: '308 - CRA' },
+    { name: 'Panupong Kaewkhao', room: '307 - PSCM' },
+  ];
+  
+
   useEffect(() => {
     let interval;
     let isRedBackground = true; // Flag to toggle between red and yellow backgrounds
   
     if (isNotificationsEnabled) {
       interval = setInterval(() => {
+        const randomPerson = peopleDetails[Math.floor(Math.random() * peopleDetails.length)];
         const backgroundColor = isRedBackground ? 'red' : 'yellow';
         const textColor = isRedBackground ? 'white' : 'black';
   
         const toastContent = (
-          <div style={{ color: textColor }}> {/* Dynamic text color */}
+          <div style={{ color: textColor }}>
             <FontAwesomeIcon icon={faExclamationTriangle} style={{ color: textColor }} />
-            {' Demo toggle is now ON'}
+            {`${randomPerson.name} (Room ${randomPerson.room})`}
           </div>
         );
   
